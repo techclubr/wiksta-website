@@ -1,37 +1,37 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
+
+const BASE_URL = 'https://wiksta.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://wiksta.com";
-
   return [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/features`,
+      url: `${BASE_URL}/features`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/for-venues`,
+      url: `${BASE_URL}/for-venues`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/pricing`,
+      url: `${BASE_URL}/pricing`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${BASE_URL}/contact`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 0.7,
     },
   ];
