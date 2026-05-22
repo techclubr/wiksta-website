@@ -1,41 +1,50 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { PlausibleAnalytics } from './components/PlausibleAnalytics';
+import './globals.css';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Wiksta — Run your sports venue on WhatsApp",
-    template: "%s | Wiksta",
+    default: 'Wiksta — Run Your Sports Venue on WhatsApp',
+    template: '%s | Wiksta',
   },
   description:
-    "Wiksta helps sports venue owners automate bookings, collect payments, and manage customers — all through WhatsApp.",
+    'Wiksta is the WhatsApp-first sports venue management platform. Manage bookings, collect payments, and grow your turf, court, or facility — all through WhatsApp.',
+  keywords: [
+    'sports venue management',
+    'WhatsApp booking',
+    'turf booking',
+    'court booking',
+    'sports facility software',
+    'venue management',
+    'online booking',
+  ],
   openGraph: {
-    title: "Wiksta — Run your sports venue on WhatsApp",
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://wiksta.com',
+    siteName: 'Wiksta',
+    title: 'Wiksta — Run Your Sports Venue on WhatsApp',
     description:
-      "Automate bookings, collect payments, and manage customers through WhatsApp. No app downloads needed.",
-    url: "https://wiksta.com",
-    siteName: "Wiksta",
-    locale: "en_US",
-    type: "website",
+      'Manage bookings, collect payments, and grow your sports facility — all through WhatsApp.',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Wiksta — Run your sports venue on WhatsApp",
+    card: 'summary_large_image',
+    title: 'Wiksta — Run Your Sports Venue on WhatsApp',
     description:
-      "Automate bookings, collect payments, and manage customers through WhatsApp. No app downloads needed.",
+      'Manage bookings, collect payments, and grow your sports facility — all through WhatsApp.',
   },
   robots: {
     index: true,
@@ -47,22 +56,17 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): React.JSX.Element {
   return (
-    <html lang="en">
-      <head>
-        <script
-          defer
-          data-domain="wiksta.com"
-          src="https://plausible.io/js/script.js"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col">
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
+        <PlausibleAnalytics />
       </body>
     </html>
   );
